@@ -1,0 +1,5 @@
+target/
+.other/
+.database/
+.idea/
+*.iml
