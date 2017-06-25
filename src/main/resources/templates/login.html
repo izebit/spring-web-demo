@@ -28,7 +28,7 @@
             }
         }
     </style>
-    <title>Заглавная страница блога</title>
+    <title>Страница авторизации</title>
 </head>
 <body>
 
@@ -44,11 +44,13 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/blog">Статьи</a></li>
+                <li><a href="/blog">Статьи</a></li>
                 <li><a href="/blog/editor">Добавить свою</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/blog/login"><span class="glyphicon glyphicon-log-in"></span> Залогироваться</a></li>
+                <li class="active">
+                    <a href="/blog/login"><span class="glyphicon glyphicon-log-in"></span> Залогироваться</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -57,22 +59,36 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-8 text-left">
-            <div>
-                <h1>Добро пожаловать</h1>
-                <p>
-                    Этот сайт является демо версией возможностей <b>framework'а Spring</b><br/>
-                    C исходным кодом можете ознакомиться <a href="https://github.com/izebit/spring-web-demo">здесь</a>
-                </p>
-                <hr/>
-            </div>
 
-            <div th:each="article : ${articles}">
-                <h3 th:text="${article.title}"/>
-                <p th:text="${article.content}"/>
-                <hr/>
-            </div>
+            <form th:action="@{/blog/login}" method="post">
+                <fieldset>
+                    <h2>Введите данные</h2>
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">
+                            Вы ввели неправильные данные
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="username" type="text" class="form-control" name="username"
+                               placeholder="логин" required="required"/>
+                    </div>
+                    <br/>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="password" type="password" class="form-control" name="password"
+                               placeholder="пароль" required="required"/>
+                    </div>
+                    <br/>
+                    <div>
+                        <button type="submit" class="btn btn-success">Войти</button>
+                    </div>
+                </fieldset>
+            </form>
+            <hr/>
         </div>
     </div>
 </div>
+
 </body>
 </html>

@@ -38,4 +38,9 @@ public class MainController {
         service.save(article);
         return "redirect:../";
     }
+
+    @RequestMapping(value = "/login")
+    public String loginPage() {
+        return "login";
+    }
 }
