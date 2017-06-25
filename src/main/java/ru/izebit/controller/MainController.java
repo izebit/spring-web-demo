@@ -3,8 +3,10 @@ package ru.izebit.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import ru.izebit.model.Article;
 import ru.izebit.service.ArticleService;
 
 /**
@@ -25,8 +27,15 @@ public class MainController {
         return "main";
     }
 
-    @RequestMapping(value = "editor", method = RequestMethod.POST)
+    @RequestMapping(value = "/editor")
     public String editorPage(Model model) {
+        model.addAttribute("article", new Article());
         return "editor";
+    }
+
+    @RequestMapping(value = "/editor/submit", method = RequestMethod.POST)
+    public String submitArticle(@ModelAttribute Article article) {
+        service.save(article);
+        return "redirect:../";
     }
 }

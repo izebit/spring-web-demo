@@ -17,7 +17,5 @@ public class ArticleService {
 
     public void save(Article article) {
         repository.save(article);
-
-        System.out.println(article);
     }
 }

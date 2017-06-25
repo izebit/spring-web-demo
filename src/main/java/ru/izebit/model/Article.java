@@ -1,9 +1,6 @@
 package ru.izebit.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -19,7 +16,8 @@ public class Article implements Serializable, Comparable<Article> {
     private Integer id;
     @Column
     private String title;
-    @Column
+    @Column(length = 1000000)
+    @Lob
     private String content;
     @Column
     private long creationTimestamp;

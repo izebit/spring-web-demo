@@ -11,21 +11,24 @@
             margin-bottom: 0;
             border-radius: 0;
         }
+
         .row.content {
             height: 450px
         }
+
         footer {
             background-color: #555;
             color: white;
             padding: 15px;
         }
+
         @media screen and (max-width: 767px) {
             .row.content {
                 height: auto;
             }
         }
     </style>
-    <title>Заглавная страница блога</title>
+    <title>Страница редактора</title>
 </head>
 <body>
 
@@ -41,8 +44,8 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/blog">Статьи</a></li>
-                <li><a href="/blog/editor">Добавить свою</a></li>
+                <li><a href="/blog">Статьи</a></li>
+                <li><a href="/blog/editor" class="active">Добавить свою</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Залогироваться</a></li>
@@ -54,16 +57,20 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-8 text-left">
-            <h1>Добро пожаловать</h1>
-            <p>
-                Этот сайт является демо версией возможностей <b>framework'а Spring</b><br/>
-                C исходным кодом можете ознакомиться <a href="https://github.com/izebit/spring-web-demo">здесь</a>
-            </p>
+            <form action="#" th:action="@{/blog/editor/submit}" th:object="${article}" method="post">
+                <h1>Создание статьи</h1>
+                <div class="form-group">
+                    <label for="usr">Название</label>
+                    <input type="text" class="form-control" id="usr" th:field="*{title}"/>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Текст</label>
+                    <textarea class="form-control" rows="20" id="comment" th:field="*{content}"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </form>
             <hr/>
-            <div>
-                <h3>Тестовый пример</h3>
-                <p th:text="${message}"/>
-            </div>
         </div>
     </div>
 </div>
