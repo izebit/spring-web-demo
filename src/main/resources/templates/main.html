@@ -53,17 +53,20 @@
         </div>
     </div>
 </nav>
-
+<br/>
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-8 text-left">
             <div>
-                <h1>Добро пожаловать</h1>
-                <p>
-                    Этот сайт является демо версией возможностей <b>framework'а Spring</b><br/>
-                    C исходным кодом можете ознакомиться <a href="https://github.com/izebit/spring-web-demo">здесь</a>
-                </p>
-                <hr/>
+                <div class="well">
+                    <div class="panel-body">
+                        <h1>Добро пожаловать</h1>
+                        <p>
+                            Этот сайт является демо версией возможностей <b>framework'а Spring</b><br/>
+                            C исходным кодом можете ознакомиться <a href="https://github.com/izebit/spring-web-demo">здесь</a>
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div th:each="article : ${articles}">
