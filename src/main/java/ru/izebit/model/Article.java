@@ -23,11 +23,6 @@ public class Article implements Serializable, Comparable<Article> {
     private long creationTimestamp;
 
     public Article() {
-    }
-
-    public Article(String title, String content) {
-        this.content = content;
-        this.title = title;
         this.creationTimestamp = System.currentTimeMillis();
     }
 

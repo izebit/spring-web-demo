@@ -23,7 +23,7 @@ public class MainController {
 
     @RequestMapping
     public String mainPage(Model model) {
-        model.addAttribute("message", "Здравствуй мир!");
+        model.addAttribute("articles", service.getAll());
         return "main";
     }
 
