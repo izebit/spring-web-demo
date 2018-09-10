@@ -72,6 +72,9 @@
             <div th:each="article : ${articles}">
                 <h3 th:text="${article.title}"/>
                 <p th:text="${article.content}"/>
+                <a th:href="@{/blog/editor/delete/} + ${article.id}">
+                    <img border="0" src="img/remove-icon.png" width="30" height="30"/>
+                </a>
                 <hr/>
             </div>
         </div>

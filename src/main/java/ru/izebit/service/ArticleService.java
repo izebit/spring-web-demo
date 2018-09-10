@@ -14,7 +14,7 @@ import java.util.stream.StreamSupport;
 
 /**
  * @author <a href="mailto:izebit@gmail.com">Artem Konovalov</a> <br/>
- *         Creation date: 6/25/17.
+ * Creation date: 6/25/17.
  * @since 1.0
  */
 @Service
@@ -23,7 +23,8 @@ public class ArticleService {
     private ArticleRepository repository;
 
     public void save(Article article) {
-        repository.save(article);
+        Article savedArticle = repository.save(article);
+        System.out.println(savedArticle.getId());
     }
 
     public List<Article> getAll() {
@@ -33,5 +34,9 @@ public class ArticleService {
                         false)
                 .sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList());
+    }
+
+    public void delete(Integer articleId) {
+        repository.delete(articleId);
     }
 }

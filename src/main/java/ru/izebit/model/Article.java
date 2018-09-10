@@ -47,4 +47,12 @@ public class Article implements Serializable, Comparable<Article> {
     public void setContent(String content) {
         this.content = content;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

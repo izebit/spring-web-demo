@@ -20,6 +20,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/blog").permitAll()
                 .antMatchers("/blog/img").permitAll()
                 .antMatchers("/blog/editor").hasRole("EDITOR")
+                .antMatchers("/blog/editor/delete").hasRole("EDITOR")
                 .and()
                 .formLogin().loginPage("/blog/login").defaultSuccessUrl("/blog/editor").permitAll()
                 .and()

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.izebit.model.Article;
@@ -11,7 +12,7 @@ import ru.izebit.service.ArticleService;
 
 /**
  * @author <a href="mailto:izebit@gmail.com">Artem Konovalov</a> <br/>
- *         Creation date: 6/25/17.
+ * Creation date: 6/25/17.
  * @since 1.0
  */
 @Controller
@@ -36,6 +37,12 @@ public class MainController {
     @RequestMapping(value = "/editor/submit", method = RequestMethod.POST)
     public String submitArticle(@ModelAttribute Article article) {
         service.save(article);
+        return "redirect:../";
+    }
+
+    @RequestMapping(value = "/editor/delete/{article_id}")
+    public String deteleArticle(@PathVariable("article_id") Integer articleId) {
+        service.delete(articleId);
         return "redirect:../";
     }
 
